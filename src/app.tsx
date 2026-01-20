@@ -2,8 +2,8 @@ import Footer from '@/components/Footer';
 import RightContent from '@/components/RightContent';
 import { notification } from 'antd';
 import 'moment/locale/vi';
-import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
-import { getIntl, getLocale, history } from 'umi';
+import type { RequestConfig } from 'umi';
+import { history } from 'umi';
 import type { RequestOptionsInit, ResponseError } from 'umi-request';
 import ErrorBoundary from './components/ErrorBoundary';
 // import LoadingPage from './components/Loading';
@@ -40,21 +40,18 @@ const authHeaderInterceptor = (url: string, options: RequestOptionsInit) => ({})
  */
 export const request: RequestConfig = {
 	errorHandler: (error: ResponseError) => {
-		const { messages } = getIntl(getLocale());
 		const { response } = error;
 
 		if (response && response.status) {
 			const { status, statusText, url } = response;
-			const requestErrorMessage = messages['app.request.error'];
-			const errorMessage = `${requestErrorMessage} ${status}: ${url}`;
-			const errorDescription = messages[`app.request.${status}`] || statusText;
+			const errorMessage = `Request error ${status}: ${url}`;
+			const errorDescription = statusText || 'An error occurred';
+
 			notification.error({
 				message: errorMessage,
 				description: errorDescription,
 			});
-		}
-
-		if (!response) {
+		} else {
 			notification.error({
 				description: 'Yêu cầu gặp lỗi',
 				message: 'Bạn hãy thử lại sau',
@@ -66,7 +63,14 @@ export const request: RequestConfig = {
 };
 
 // ProLayout  https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState }) => {
+interface InitialState {
+	currentUser?: any;
+	authorizedPermissions?: { rsname: string }[];
+	settings?: any;
+}
+
+// Updated layout configuration to ensure compatibility with umi
+export const layout = ({ initialState }: { initialState: InitialState }) => {
 	return {
 		unAccessible: (
 			<OIDCBounder>
@@ -92,7 +96,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
 					!isUncheckPath &&
 					currentRole &&
 					initialState?.authorizedPermissions?.length &&
-					!initialState?.authorizedPermissions?.find((item) => item.rsname === currentRole)
+					!initialState?.authorizedPermissions?.find((item: { rsname: string }) => item.rsname === currentRole)
 				)
 					history.replace('/403');
 			}
@@ -113,12 +117,10 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
 			</a>
 		),
 
-		childrenRender: (dom) => (
+		childrenRender: (dom: React.ReactNode) => (
 			<OIDCBounder>
 				<ErrorBoundary>
-					{/* <TechnicalSupportBounder> */}
 					<OneSignalBounder>{dom}</OneSignalBounder>
-					{/* </TechnicalSupportBounder> */}
 				</ErrorBoundary>
 			</OIDCBounder>
 		),

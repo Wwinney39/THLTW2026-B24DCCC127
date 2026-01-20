@@ -4,10 +4,9 @@ import { adminlogin, getUserInfo } from '@/services/base/api';
 import { keycloakAuthority } from '@/utils/ip';
 import rules from '@/utils/rules';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Tabs, message } from 'antd';
+import { Button, Form, Input, message, Tabs } from 'antd';
 import React, { useState } from 'react';
-// import Recaptcha from 'react-recaptcha';
-import { history, useIntl, useModel } from 'umi';
+import { history, useModel } from 'umi';
 import styles from './index.less';
 
 const Login: React.FC = () => {
@@ -17,32 +16,22 @@ const Login: React.FC = () => {
 	const { initialState, setInitialState } = useModel('@@initialState');
 	const [isVerified, setIsverified] = useState<boolean>(true);
 	const [visibleCaptcha, setVisibleCaptcha] = useState<boolean>(false);
-	// const [visibleCaptcha2, setVisibleCaptcha2] = useState<boolean>(false);
-	// const recaptchaRef = useRef(null);
-	const intl = useIntl();
 	const [form] = Form.useForm();
 
 	/**
 	 * Xử lý token, get info sau khi đăng nhập
 	 */
 	const handleRole = async (role: { access_token: string; refresh_token: string }) => {
-		// Tobe removed
 		localStorage.setItem('token', role?.access_token);
 		localStorage.setItem('refreshToken', role?.refresh_token);
 
-		// const decoded = jwt_decode(role?.access_token) as any;
 		const info = await getUserInfo();
 		setInitialState({
 			...initialState,
 			currentUser: info?.data?.data,
-			// authorizedPermissions: decoded?.authorization?.permissions,
 		});
 
-		const defaultloginSuccessMessage = intl.formatMessage({
-			id: 'pages.login.success',
-			defaultMessage: 'success',
-		});
-		message.success(defaultloginSuccessMessage);
+		message.success('Đăng nhập thành công');
 		history.push('/dashboard');
 	};
 
@@ -62,23 +51,13 @@ const Login: React.FC = () => {
 			if (count >= 4) {
 				setIsverified(false);
 				setVisibleCaptcha(!visibleCaptcha);
-				// setVisibleCaptcha2(true);
 			}
 			setCount(count + 1);
 			localStorage.setItem('failed', (count + 1).toString());
-			const defaultloginFailureMessage = intl.formatMessage({
-				id: 'pages.login.failure',
-				defaultMessage: 'failure',
-			});
-			message.error(defaultloginFailureMessage);
+			message.error('Đăng nhập thất bại');
 		}
 		setSubmitting(false);
 	};
-
-	// const verifyCallback = (response: any) => {
-	// 	if (response) setIsverified(true);
-	// 	else setIsverified(false);
-	// };
 
 	return (
 		<div className={styles.container}>
@@ -93,20 +72,7 @@ const Login: React.FC = () => {
 
 				<div className={styles.main}>
 					<Tabs activeKey={type} onChange={setType}>
-						<Tabs.TabPane
-							key='account'
-							tab={intl.formatMessage({
-								id: 'pages.login.accountLogin.tab',
-								defaultMessage: 'tab',
-							})}
-						/>
-						{/* <Tabs.TabPane
-              key="accountAdmin"
-              tab={intl.formatMessage({
-                id: 'pages.login.accountLoginAdmin.tab',
-                defaultMessage: 'tab',
-              })}
-            /> */}
+						<Tabs.TabPane key='account' tab='Đăng nhập tài khoản' />
 					</Tabs>
 
 					{type === 'account' ? (
@@ -119,30 +85,21 @@ const Login: React.FC = () => {
 						>
 							<Form.Item label='' name='login' rules={[...rules.required]}>
 								<Input
-									placeholder={intl.formatMessage({
-										id: 'pages.login.username.placeholder',
-										defaultMessage: 'Nhập tên đăng nhập',
-									})}
+									placeholder='Nhập tên đăng nhập'
 									prefix={<UserOutlined className={styles.prefixIcon} />}
 									size='large'
 								/>
 							</Form.Item>
 							<Form.Item label='' name='password' rules={[...rules.required]}>
 								<Input.Password
-									placeholder={intl.formatMessage({
-										id: 'pages.login.password.placeholder',
-										defaultMessage: 'Nhập mật khẩu',
-									})}
+									placeholder='Nhập mật khẩu'
 									prefix={<LockOutlined className={styles.prefixIcon} />}
 									size='large'
 								/>
 							</Form.Item>
 
 							<Button type='primary' block size='large' loading={submitting}>
-								{intl.formatMessage({
-									id: 'pages.login.submit',
-									defaultMessage: 'submit',
-								})}
+								Đăng nhập
 							</Button>
 						</Form>
 					) : null}
@@ -157,30 +114,6 @@ const Login: React.FC = () => {
 						>
 							Quên mật khẩu?
 						</Button>
-
-						{/* {type === 'accountAdmin' && visibleCaptcha && count >= 5 && (
-              <Recaptcha
-                ref={recaptchaRef}
-                size="normal"
-                sitekey="6LelHsEeAAAAAJmsVdeC2EPNCAVEtfRBUGSKireh"
-                render="explicit"
-                hl="vi"
-                // onloadCallback={callback}
-                verifyCallback={verifyCallback}
-              />
-            )}
-
-            {type === 'accountAdmin' && !visibleCaptcha && visibleCaptcha2 && count >= 5 && (
-              <Recaptcha
-                ref={recaptchaRef}
-                size="normal"
-                sitekey="6LelHsEeAAAAAJmsVdeC2EPNCAVEtfRBUGSKireh"
-                render="explicit"
-                hl="vi"
-                // onloadCallback={callback}
-                verifyCallback={verifyCallback}
-              />
-            )} */}
 					</div>
 				</div>
 			</div>
