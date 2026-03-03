@@ -21,7 +21,7 @@
 	{
 		path: '/dashboard',
 		name: 'Dashboard',
-		component: './TrangChu',
+		component: './Dashboard',
 		icon: 'HomeOutlined',
 	},
 	{
@@ -46,6 +46,29 @@
 		path: '/DanhSachSanPham',
 		name: 'DanhSachSanPham',
 		component: './DanhSachSanPham',
+	},
+	{
+		path: '/QuanLySanPham',
+		name: 'QuanLySanPham',
+		component: './QuanLySanPham',
+	},
+
+	{
+		path: '/QuanLyDonHang',
+		name: 'QuanLyDonHang',
+		component: './QuanLyDonHang',
+	},
+
+	{
+		path: '/ChonSoNgauNhien',
+		name: 'ChonSoNgauNhien',
+		component: './ChonSoNgauNhien',
+	},
+
+	{
+		path: '/QuanLyTienDo',
+		name: 'QuanLyTienDo',
+		component: './QuanLyTienDo',
 	},
 
 	// DANH MUC HE THONG
