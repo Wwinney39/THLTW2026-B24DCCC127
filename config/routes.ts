@@ -43,6 +43,20 @@
 		component: './TodoList',
 	},
 
+	{
+		path: '/PlayOanTuTi',
+		name: 'PlayOanTuTi',
+		icon: 'RocketOutlined',
+		component: './PlayOanTuTi',
+	},
+
+	{
+		path: '/QuestionBank',
+		name: 'QuestionBank',
+		icon: 'FileTextOutlined',
+		component: './QuestionBank',
+	},
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
