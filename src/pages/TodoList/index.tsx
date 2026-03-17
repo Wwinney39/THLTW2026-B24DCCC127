@@ -26,10 +26,10 @@ const TodoList: React.FC = () => {
 				</Button>
 			</div>
 			<Row gutter={[10, 10]} style={{ marginTop: 20 }}>
-				{data?.map((item, index) => {
+				{data?.map((item) => {
 					return (
-						<Col md={8} xxl={6} key={index}>
-							<TodoItem record={item} index={index} />
+						<Col md={8} xxl={6} key={item.id ?? item.key}>
+							<TodoItem record={item} />
 						</Col>
 					);
 				})}

@@ -1,4 +1,7 @@
-﻿export default [
+﻿import component from "@/locales/en-US/component";
+import OrderedListOutlined from "@ant-design/icons/lib/icons/OrderedListOutlined";
+
+export default [
 	{
 		path: '/user',
 		layout: false,
@@ -42,6 +45,49 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+    path: '/booking',
+    name: 'Quản lý Booking',
+    icon: 'BookingOutlined',
+    routes: [
+      {
+        path: '/booking/main',
+        name: 'Giao diện chính',
+        icon: 'CalendarOutlined',
+        component: './Booking/Booking', // Chạy file Booking.tsx
+      },
+      {
+        path: '/booking/appointment-list',
+        name: 'Danh sách hẹn',
+        icon: 'OrderedListOutlined',
+        component: './Booking/AppointmentList', // Chạy AppointmentList.tsx
+      },
+      {
+        path: '/booking/management',
+        name: 'Điều hành Booking',
+        icon: 'SolutionOutlined',
+        component: './Booking/BookingManagement', // Chạy BookingManagement.tsx
+      },
+      {
+        path: '/booking/service',
+        name: 'Quản lý dịch vụ',
+        icon: 'SolutionOutlined',
+        component: './Booking/ServiceManagement', // Chạy ServiceManagement.tsx
+      },
+      {
+        path: '/booking/staff',
+        name: 'Quản lý nhân viên',
+        icon: 'UserOutlined',
+        component: './Booking/StaffManagement', // Chạy StaffManagement.tsx
+      },
+      {
+        path: '/booking/statistics',
+        name: 'Thống kê',
+        icon: 'BarChartOutlined',
+        component: './Booking/Statistics', // Chạy Statistics.tsx
+      },
+    ],
+  },
 
 	// DANH MUC HE THONG
 	// {
