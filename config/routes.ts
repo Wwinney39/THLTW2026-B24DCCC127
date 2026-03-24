@@ -88,6 +88,37 @@ export default [
       },
     ],
   },
+  {
+    path: '/diplomaSystem',
+    name: 'Quản lý bằng cấp',
+    icon: 'BookOutlined',
+    routes: [
+      {
+        path: '/diplomaSystem/cap-bang',
+        name: 'Cấp bằng',
+        icon: 'FileAddOutlined',
+        component: './DiplomaSystem/BookManagement',
+      },
+      {
+        path: '/diplomaSystem/tra-cuu',
+        name: 'Tra cứu',
+        icon: 'SearchOutlined',
+        component: './DiplomaSystem/TraCuuPage',
+      },
+      {
+        path: '/diplomaSystem/cau-hinh',
+        name: 'Cấu hình',
+        icon: 'SettingOutlined',
+        component: './DiplomaSystem/ConfigFields',
+      },
+      {
+        path: '/diplomaSystem/quan-ly-so',
+        name: 'Quản lý sổ & QĐ',
+        icon: 'BookOutlined',
+        component: './DiplomaSystem/QuanLySoVanBangPage',
+      },
+    ],
+  },
 
 	// DANH MUC HE THONG
 	// {
