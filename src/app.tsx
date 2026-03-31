@@ -5,6 +5,7 @@ import 'moment/locale/vi';
 import type { RequestConfig } from 'umi';
 import { history } from 'umi';
 import type { RequestOptionsInit, ResponseError } from 'umi-request';
+import { Provider } from 'react-redux';
 import ErrorBoundary from './components/ErrorBoundary';
 // import LoadingPage from './components/Loading';
 import { OIDCBounder } from './components/OIDCBounder';
@@ -14,6 +15,7 @@ import TechnicalSupportBounder from './components/TechnicalSupportBounder';
 import NotAccessible from './pages/exception/403';
 import NotFoundContent from './pages/exception/404';
 import type { IInitialState } from './services/base/typing';
+import { store } from './models/store';
 import './styles/global.less';
 import { currentRole } from './utils/ip';
 
@@ -118,11 +120,13 @@ export const layout = ({ initialState }: { initialState: InitialState }) => {
 		),
 
 		childrenRender: (dom: React.ReactNode) => (
-			<OIDCBounder>
-				<ErrorBoundary>
-					<OneSignalBounder>{dom}</OneSignalBounder>
-				</ErrorBoundary>
-			</OIDCBounder>
+			<Provider store={store}>
+				<OIDCBounder>
+					<ErrorBoundary>
+						<OneSignalBounder>{dom}</OneSignalBounder>
+					</ErrorBoundary>
+				</OIDCBounder>
+			</Provider>
 		),
 		menuHeaderRender: undefined,
 		...initialState?.settings,

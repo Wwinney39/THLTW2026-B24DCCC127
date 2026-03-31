@@ -120,6 +120,39 @@ export default [
     ],
   },
 
+
+  {
+    path: '/club-management',
+    name: 'Quản lý câu lạc bộ',
+    icon: 'TeamOutlined',
+    routes: [
+      {
+        path: '/club-management/club-list',
+        name: 'Danh sách câu lạc bộ',
+        icon: 'TeamOutlined',
+        component: './ClubManagement/ClubList',
+      },
+      {
+        path: '/club-management/member-applications',
+        name: 'Quản lý đơn đăng ký thành viên',
+        icon: 'SearchOutlined',
+        component: './ClubManagement/MemberApplications',
+      },
+      {
+        path: '/club-management/member-management',
+        name: 'Quản lý thành viên câu lạc bộ',
+        icon: 'UserOutlined',
+        component: './ClubManagement/MemberManagement',
+      },
+      {
+        path: '/club-management/reports',
+        name: 'Báo cáo và thống kê',
+        icon: 'BookOutlined',
+        component: './ClubManagement/Reports',
+      },
+    ],
+  },
+
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
