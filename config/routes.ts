@@ -1,4 +1,4 @@
-﻿import component from "@/locales/en-US/component";
+import component from "@/locales/en-US/component";
 import OrderedListOutlined from "@ant-design/icons/lib/icons/OrderedListOutlined";
 
 export default [
@@ -166,6 +166,38 @@ export default [
 	// 		},
 	// 	],
 	// },
+
+  {
+    path: '/travel',
+    name: 'Kế hoạch du lịch ',
+    icon: 'CompassOutlined',
+    routes: [
+      {
+        path: '/travel/discover',
+        name: 'Khám phá',
+        icon: 'SearchOutlined',
+        component: './Travel/Discover',
+      },
+      {
+        path: '/travel/plan',
+        name: 'Tạo lịch trình',
+        icon: 'ScheduleOutlined',
+        component: './Travel/Plan',
+      },
+      {
+        path: '/travel/budget',
+        name: 'Quản lý ngân sách',
+        icon: 'PieChartOutlined',
+        component: './Travel/Budget',
+      },
+      {
+        path: '/travel/admin',
+        name: 'Quản trị điểm đến',
+        icon: 'SettingOutlined',
+        component: './Travel/Admin',
+      },
+    ],
+  },
 
 	{
 		path: '/notification',
