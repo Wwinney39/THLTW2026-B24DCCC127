@@ -103,15 +103,31 @@ export const initialDestinations: Destination[] = [
 ];
 
 // Utility functions for LocalStorage mockup
+const DESTINATIONS_STORAGE_KEY = 'travel_destinations';
+const DESTINATIONS_VERSION_KEY = 'travel_destinations_version';
+const DESTINATIONS_CURRENT_VERSION = 1;
+
 export const getDestinations = (): Destination[] => {
-  const data = localStorage.getItem('travel_destinations');
-  if (data) return JSON.parse(data);
-  localStorage.setItem('travel_destinations', JSON.stringify(initialDestinations));
+  const data = localStorage.getItem(DESTINATIONS_STORAGE_KEY);
+  const storedVersion = Number(localStorage.getItem(DESTINATIONS_VERSION_KEY));
+
+  if (data && storedVersion === DESTINATIONS_CURRENT_VERSION) {
+    return JSON.parse(data);
+  }
+
+  localStorage.setItem(DESTINATIONS_STORAGE_KEY, JSON.stringify(initialDestinations));
+  localStorage.setItem(DESTINATIONS_VERSION_KEY, String(DESTINATIONS_CURRENT_VERSION));
   return initialDestinations;
 };
 
 export const saveDestinations = (destinations: Destination[]) => {
-  localStorage.setItem('travel_destinations', JSON.stringify(destinations));
+  localStorage.setItem(DESTINATIONS_STORAGE_KEY, JSON.stringify(destinations));
+  localStorage.setItem(DESTINATIONS_VERSION_KEY, String(DESTINATIONS_CURRENT_VERSION));
+};
+
+export const resetDestinations = () => {
+  localStorage.removeItem(DESTINATIONS_STORAGE_KEY);
+  localStorage.removeItem(DESTINATIONS_VERSION_KEY);
 };
 
 export const defaultItinerary = {
