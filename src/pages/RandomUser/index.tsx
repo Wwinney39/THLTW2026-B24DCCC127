@@ -109,7 +109,7 @@ const RandomUser = () => {
 				footer={false}
 				title={isEdit ? 'Edit User' : 'Add User'}
 				visible={visible}
-				onOk={() => {}}
+				onOk={() => { }}
 				onCancel={() => {
 					setVisible(false);
 				}}

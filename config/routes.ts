@@ -48,7 +48,7 @@ export default [
   {
     path: '/booking',
     name: 'Quản lý Booking',
-    icon: 'BookingOutlined',
+    icon: 'CalendarOutlined',
     routes: [
       {
         path: '/booking/main',
@@ -183,7 +183,7 @@ export default [
       },
     ],
   },
-  
+
   {
     path: '/onlineCourse',
     name: 'Quản lý khóa học Online ',
@@ -209,6 +209,47 @@ export default [
       },
     ],
   },
+
+
+  {
+    path: '/blog',
+    name: 'Ứng dụng Blog',
+    icon: 'ReadOutlined',
+    routes: [
+      {
+        path: '/blog/home',
+        name: 'Trang chủ',
+        icon: 'HomeOutlined',
+        component: './Blog/Home',
+      },
+      {
+        path: '/blog/post-list',
+        name: 'Chi tiết bài viết',
+        icon: 'OrderedListOutlined',
+        component: './Blog/PostList',
+      },
+      {
+        path: '/blog/introduction',
+        name: 'Giới thiệu',
+        icon: 'FileTextOutlined',
+        component: './Blog/Introduction',
+      },
+      {
+        path: '/blog/admin',
+        name: 'Quản trị bài viết    ',
+        icon: 'SettingOutlined',
+        component: './Blog/Admin',
+      },
+      {
+        path: '/blog/tag-management',
+        name: 'Quản trị thẻ',
+        icon: 'TagOutlined',
+        component: './Blog/TagManagement',
+      },
+    ],
+  },
+
+
 
   // DANH MUC HE THONG
   // {

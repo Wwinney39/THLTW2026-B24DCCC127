@@ -115,30 +115,30 @@ const Budget: React.FC = () => {
 
         <Col xs={24} md={8}>
           <Card title="Chỉ số tổng quan" style={{ borderRadius: 8, height: '100%' }}>
-             <div style={{ marginBottom: 24 }}>
-                <Text type="secondary">Hạn mức ngân sách</Text>
-                <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
-                  <InputNumber 
-                    value={newBudgetLimit} 
-                    onChange={(val) => setNewBudgetLimit(val || 0)} 
-                    style={{ width: '100%', marginRight: 8 }}
-                    formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    step={1000000}
-                  />
-                  <Button type="primary" onClick={handleUpdateBudget}>Lưu</Button>
-                </div>
-             </div>
-             
-             <Divider />
+            <div style={{ marginBottom: 24 }}>
+              <Text type="secondary">Hạn mức ngân sách</Text>
+              <div style={{ display: 'flex', alignItems: 'center', marginTop: 8 }}>
+                <InputNumber
+                  value={newBudgetLimit}
+                  onChange={(val) => setNewBudgetLimit(val || 0)}
+                  style={{ width: '100%', marginRight: 8 }}
+                  formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  step={1000000}
+                />
+                <Button type="primary" onClick={handleUpdateBudget}>Lưu</Button>
+              </div>
+            </div>
 
-             <Row gutter={16}>
-               <Col span={12}>
-                 <Statistic title="Tổng chi phí" value={totalCost} suffix="đ" valueStyle={{ color: isOverBudget ? '#cf1322' : '#3f8600' }} />
-               </Col>
-               <Col span={12}>
-                 <Statistic title="Sự chênh lệch" value={Math.abs(itinerary.budgetLimit - totalCost)} suffix="đ" valueStyle={{ color: isOverBudget ? '#cf1322' : '#3f8600' }} prefix={isOverBudget ? '-' : '+'} />
-               </Col>
-             </Row>
+            <Divider />
+
+            <Row gutter={16}>
+              <Col span={12}>
+                <Statistic title="Tổng chi phí" value={totalCost} suffix="đ" valueStyle={{ color: isOverBudget ? '#cf1322' : '#3f8600' }} />
+              </Col>
+              <Col span={12}>
+                <Statistic title="Sự chênh lệch" value={Math.abs(itinerary.budgetLimit - totalCost)} suffix="đ" valueStyle={{ color: isOverBudget ? '#cf1322' : '#3f8600' }} prefix={isOverBudget ? '-' : '+'} />
+              </Col>
+            </Row>
           </Card>
         </Col>
 
