@@ -251,6 +251,46 @@ export default [
 
 
 
+  {
+    path: '/fitness',
+    name: 'Theo dõi Sức khỏe',
+    icon: 'HeartOutlined',
+    routes: [
+      {
+        path: '/fitness/dashboard',
+        name: 'Trang chủ',
+        icon: 'DashboardOutlined',
+        component: './Fitness/Dashboard',
+      },
+      {
+        path: '/fitness/workout-log',
+        name: 'Nhật ký tập luyện',
+        icon: 'FireOutlined',
+        component: './Fitness/WorkoutLog',
+      },
+      {
+        path: '/fitness/health-metrics',
+        name: 'Chỉ số sức khỏe',
+        icon: 'LineChartOutlined',
+        component: './Fitness/HealthMetrics',
+      },
+      {
+        path: '/fitness/goals',
+        name: 'Quản lý mục tiêu',
+        icon: 'TrophyOutlined',
+        component: './Fitness/GoalManagement',
+      },
+      {
+        path: '/fitness/exercise-library',
+        name: 'Thư viện bài tập',
+        icon: 'BookOutlined',
+        component: './Fitness/ExerciseLibrary',
+      },
+    ],
+  },
+
+
+
   // DANH MUC HE THONG
   // {
   // 	name: 'DanhMuc',

@@ -21,6 +21,11 @@ export default defineConfig({
 	manifest: {
 		basePath: '/',
 	},
+	locale: {
+		default: 'vi-VN',
+		antd: true,
+		baseNavigator: true,
+	},
 	define: {
 		'process.env.NODE_ENV': process.env.NODE_ENV,
 		...Object.entries(process.env).reduce((result, [key, value]) => {
