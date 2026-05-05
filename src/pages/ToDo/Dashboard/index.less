@@ -1,0 +1,101 @@
+.todo-dashboard {
+  padding: 24px;
+  min-height: calc(100vh - 120px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 12px;
+
+  .dashboard-header {
+    margin-bottom: 32px;
+    h2 {
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #1a202c;
+      font-family: 'Inter', sans-serif;
+    }
+    p {
+      color: #718096;
+      font-size: 16px;
+    }
+  }
+
+  .statistics-row {
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    border-radius: 16px;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .ant-statistic-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .ant-statistic-content {
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .anticon {
+      margin-right: 12px;
+      opacity: 0.8;
+    }
+  }
+
+  .total-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    .ant-statistic-title, .ant-statistic-content, .ant-statistic-content-suffix {
+      color: #ffffff;
+    }
+  }
+
+  .completed-card {
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    .ant-statistic-title, .ant-statistic-content, .ant-statistic-content-suffix {
+      color: #ffffff;
+    }
+  }
+
+  .overdue-card {
+    background: #ffffff;
+    .ant-statistic-title {
+      color: #4a5568;
+    }
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    
+    .empty-chart-placeholder {
+      text-align: center;
+      padding: 40px 20px;
+      
+      h3 {
+        font-size: 24px;
+        color: #2d3748;
+        margin-bottom: 16px;
+      }
+      
+      p {
+        color: #4a5568;
+        font-size: 16px;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+    }
+  }
+}

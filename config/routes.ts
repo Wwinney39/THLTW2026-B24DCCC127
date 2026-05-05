@@ -291,6 +291,34 @@ export default [
 
 
 
+  {
+    path: '/todo',
+    name: 'Theo dõi Công việc',
+    icon: 'HomeOutlined',
+    routes: [
+      {
+        path: '/todo/dashboard',
+        name: 'Trang chủ',
+        icon: 'DashboardOutlined',
+        component: './ToDo/Dashboard',
+      },
+      {
+        path: '/todo/kanban-board',
+        name: 'KanbanBoard',
+        icon: 'kanban',
+        component: './ToDo/KanbanBoard',
+      },
+      {
+        path: '/todo/task-list',
+        name: 'Danh Sách Task',
+        icon: 'LineChartOutlined',
+        component: './ToDo/TaskList',
+      },
+    ],
+  },
+
+
+
   // DANH MUC HE THONG
   // {
   // 	name: 'DanhMuc',
